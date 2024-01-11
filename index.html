@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Porcentaje y Puntos</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./logo-con-fondo.png" type="image/x-icon" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>Header</header>
+    <div class="container-header">
+      <img src="./logo-con-fondo.png" alt="logo" class="logo" />
+      <h1>Calcula tus puntos obtenidos</h1>
+    </div>
+    <div class="container-principal">
+      <div class="container-inputs">
+        <label for="num1">Ingresa la nota obtenida:</label>
+
+        <input
+          type="text"
+          min="0"
+          placeholder="Ingresa la nota obtenida"
+          class="inputs"
+          id="num1"
+        />
+        <p id="number1"></p>
+
+        <label for="num2">Ingresa la nota maxima:</label
+        ><input
+          type="text"
+          placeholder="Ingresa la nota maxima"
+          class="inputs"
+          id="num2"
+        />
+        <p id="number2"></p>
+        <label for="porcentaje">Ingresa el porcentaje de la evaluación</label
+        ><input
+          type="text"
+          placeholder="Porcentaje de la evaluación"
+          class="inputs"
+          id="num3"
+        />
+        <p id="number3"></p>
+        <p id="sumando"></p>
+        <button type="button" onclick="myFunction()">Calcular</button>
+      </div>
+    </div>
+    <script>
+      function myFunction() {
+        var x, y, z, r, r2, r3, suma, resultado, text;
+        x = document.getElementById("num1").value;
+        y = document.getElementById("num2").value;
+        z = document.getElementById("num3").value;
+        var input = document.getElementById("num1");
+        var input2 = document.getElementById("num2");
+        var input3 = document.getElementById("num3");
+        r = (x * 100) / y;
+        r2 = r / 100;
+        r3 = z / 5;
+        suma = r2 * r3;
+        resultado = suma.toFixed(2);
+        if ((isNaN(x) || x < 0) && (isNaN(y) || y < 0) && (isNaN(z) || z < 0)) {
+          input.style.backgroundColor = "#EF9A9A";
+          document.getElementById("number1").style.display = "block";
+          document.getElementById("number1").innerHTML =
+            "Recuerda colocar número positivo";
+          input2.style.backgroundColor = "#EF9A9A";
+          document.getElementById("number2").style.display = "block";
+          document.getElementById("number2").innerHTML =
+            "Recuerda colocar número positivo";
+          input3.style.backgroundColor = "#EF9A9A";
+          document.getElementById("number3").style.display = "block";
+          document.getElementById("number3").innerHTML =
+            "Recuerda colocar número positivo";
+        } else {
+          if ((isNaN(x) || x < 0) && (isNaN(y) || y < 0)) {
+            input.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number1").style.display = "block";
+            document.getElementById("number1").innerHTML =
+              "Recuerda colocar número positivo";
+            input2.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number2").style.display = "block";
+            document.getElementById("number2").innerHTML =
+              "Recuerda colocar número positivo";
+          } else if ((isNaN(y) || y < 0) && (isNaN(z) || z < 0)) {
+            input2.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number2").style.display = "block";
+            document.getElementById("number2").innerHTML =
+              "Recuerda colocar número positivo";
+            input3.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number3").style.display = "block";
+            document.getElementById("number3").innerHTML =
+              "Recuerda colocar número positivo";
+          } else if ((isNaN(x) || x < 0) && (isNaN(z) || z < 0)) {
+            input.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number1").style.display = "block";
+            document.getElementById("number1").innerHTML =
+              "Recuerda colocar número positivo";
+            input3.style.backgroundColor = "#EF9A9A";
+            document.getElementById("number3").style.display = "block";
+            document.getElementById("number3").innerHTML =
+              "Recuerda colocar número positivo";
+          } else {
+            if (isNaN(x) || x < 0) {
+              input.style.backgroundColor = "#EF9A9A";
+              document.getElementById("number1").style.display = "block";
+              document.getElementById("number1").innerHTML =
+                "Recuerda colocar número positivo";
+            } else if (x > 0) {
+              input.style.backgroundColor = "white";
+              document.getElementById("number1").style.display = "none";
+            } else if (isNaN(y) || y < 0) {
+              input2.style.backgroundColor = "#EF9A9A";
+              document.getElementById("number2").style.display = "block";
+              document.getElementById("number2").innerHTML =
+                "Recuerda colocar número positivo";
+            } else if (y > 0) {
+              input2.style.backgroundColor = "white";
+              document.getElementById("number2").style.display = "none";
+            } else if (isNaN(z) || z < 0) {
+              input3.style.backgroundColor = "#EF9A9A";
+              document.getElementById("sumando").innerHTML =
+                "recuerda que solo pueden ser números positivos";
+            } else if (z > 0) {
+              input3.style.backgroundColor = "white";
+              document.getElementById("number3").style.display = "none";
+            } else if (x > 0 && y > 0 && z > 0) {
+              input.style.backgroundColor = "white";
+              input2.style.backgroundColor = "white";
+              input3.style.backgroundColor = "white";
+              document.getElementById("number1").style.display = "none";
+              document.getElementById("number2").style.display = "none";
+              document.getElementById("number3").style.display = "none";
+
+              document.getElementById("sumando").innerHTML =
+                resultado + " puntos";
+            }
+          }
+        }
+        // if (isNaN(x) || x < 0 || isNaN(y) || y < 0 || isNaN(z) || z < 0) {
+        //   if (
+        //     (isNaN(x) || x < 0) &&
+        //     (isNaN(y) || y < 0) &&
+        //     (isNaN(z) || z < 0)
+        //   ) {
+        //     input.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number1").style.display = "block";
+        //     document.getElementById("number1").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //     input2.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number2").style.display = "block";
+        //     document.getElementById("number2").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //     input3.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number3").style.display = "block";
+        //     document.getElementById("number3").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if ((isNaN(x) || x < 0) && (isNaN(y) || y < 0)) {
+        //     input.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number1").style.display = "block";
+        //     document.getElementById("number1").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //     input2.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number2").style.display = "block";
+        //     document.getElementById("number2").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if ((isNaN(y) || y < 0) && (isNaN(z) || z < 0)) {
+        //     input3.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number3").style.display = "block";
+        //     document.getElementById("number3").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //     input2.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number2").style.display = "block";
+        //     document.getElementById("number2").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if ((isNaN(x) || x < 0) && (isNaN(z) || z < 0)) {
+        //     input3.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number3").style.display = "block";
+        //     document.getElementById("number3").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //     input.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number1").style.display = "block";
+        //     document.getElementById("number1").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   }
+        //   if (isNaN(x) || x < 0) {
+        //     input.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number1").style.display = "block";
+        //     document.getElementById("number1").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if (x > 0) {
+        //     input.style.backgroundColor = "white";
+        //     document.getElementById("number1").style.display = "none";
+        //   }
+        //   if (isNaN(y) || y < 0) {
+        //     input2.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number2").style.display = "block";
+        //     document.getElementById("number2").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if (y > 0) {
+        //     input2.style.backgroundColor = "white";
+        //     document.getElementById("number2").style.display = "none";
+        //   } z|else if (isNaN(z) || z < 0) {
+        //     input3.style.backgroundColor = "#EF9A9A";
+        //     document.getElementById("number3").style.display = "block";
+        //     document.getElementById("number3").innerHTML =
+        //       "Recuerda colocar número positivo";
+        //   } else if (z > 0) {
+        //     input3.style.backgroundColor = "white";
+        //     document.getElementById("number3").style.display = "none";
+        //   }
+        //   // if (isNaN(x) || x < 0) {
+        //   //   input.style.backgroundColor = "#EF9A9A";
+        //   //   document.getElementById("number1").style.display = "block";
+        //   //   document.getElementById("number1").innerHTML =
+        //   //     "Recuerda colocar número positivo";
+        //   //   document.getElementById("sumando").innerHTML =
+        //   //     "recuerda que solo pueden ser números positivos";
+        //   // } else if (x > 0) {
+        //   //   input.style.backgroundColor = "white";
+        //   // } else if (isNaN(x) || x < 0) {
+        //   //   input.style.backgroundColor = "#EF9A9A";
+        //   //   document.getElementById("sumando").innerHTML =
+        //   //     "recuerda que solo pueden ser números positivos";
+        //   // } else if (y > 0) {
+        //   //   input.style.backgroundColor = "white";
+        //   // } else if (isNaN(y) || y < 0) {
+        //   //   input2.style.backgroundColor = "#EF9A9A";
+        //   //   document.getElementById("sumando").innerHTML =
+        //   //     "recuerda que solo pueden ser números positivos";
+        //   // } else if (y > 0) {
+        //   //   input2.style.backgroundColor = "white";
+        //   // } else if (isNaN(z) || z < 0) {
+        //   //   input3.style.backgroundColor = "#EF9A9A";
+        //   //   document.getElementById("sumando").innerHTML =
+        //   //     "recuerda que solo pueden ser números positivos";
+        //   // } else if (z > 0) {
+        //   //   input3.style.backgroundColor = "white";
+        //   // }
+        // } else {
+        //   input.style.backgroundColor = "white";
+        //   input2.style.backgroundColor = "white";
+        //   input3.style.backgroundColor = "white";
+        //   document.getElementById("number1").style.display = "none";
+        //   document.getElementById("number2").style.display = "none";
+        //   document.getElementById("number3").style.display = "none";
+
+        //   document.getElementById("sumando").innerHTML = resultado + " puntos";
+        // }
+      }
+    </script>
+  </body>
+</html>
